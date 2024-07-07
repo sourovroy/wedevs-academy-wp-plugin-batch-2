@@ -23,9 +23,11 @@ class weDevs_Academy_WP_Plugin {
 	private function require_classes() {
 		require_once __DIR__ . '/includes/admin-menu.php';
 		require_once __DIR__ . '/includes/post-column.php';
+		require_once __DIR__ . '/includes/post-type.php';
 
-		new weDevs_Academy_WP_Plugin_Admin_Menu();
-		new weDevs_Academy_WP_Plugin_Post_column();
+		// new weDevs_Academy_WP_Plugin_Admin_Menu();
+		// new weDevs_Academy_WP_Plugin_Post_column();
+		new weDevs_Academy_WP_Plugin_Post_Type();
 	}
 }
 
