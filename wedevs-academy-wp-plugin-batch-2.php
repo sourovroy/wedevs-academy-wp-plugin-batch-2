@@ -24,6 +24,7 @@ class weDevs_Academy_WP_Plugin {
 		require_once __DIR__ . '/includes/admin-menu.php';
 		require_once __DIR__ . '/includes/post-column.php';
 		require_once __DIR__ . '/includes/post-type.php';
+		require_once __DIR__ . '/lib/CMB2/init.php';
 
 		// new weDevs_Academy_WP_Plugin_Admin_Menu();
 		// new weDevs_Academy_WP_Plugin_Post_column();
