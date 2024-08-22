@@ -17,6 +17,7 @@ class weDevs_Academy_WP_Plugin {
 	}
 
 	private function __construct() {
+		$this->register_constants();
 		$this->require_classes();
 	}
 
@@ -25,12 +26,18 @@ class weDevs_Academy_WP_Plugin {
 		require_once __DIR__ . '/includes/security.php';
 		require_once __DIR__ . '/includes/post-column.php';
 		require_once __DIR__ . '/includes/post-type.php';
+		require_once __DIR__ . '/includes/ajax.php';
 		require_once __DIR__ . '/lib/CMB2/init.php';
 
 		// new weDevs_Academy_WP_Plugin_Admin_Menu();
 		// new weDevs_Academy_WP_Plugin_Post_column();
 		new weDevs_Academy_WP_Plugin_Post_Type();
 		new weDevs_Academy_WP_Plugin_Security();
+		new weDevs_Academy_WP_Plugin_Ajax();
+	}
+
+	private function register_constants() {
+		define( 'WEDEVS_ACADEMY_URL', plugin_dir_url( __FILE__ ) );
 	}
 }
 
