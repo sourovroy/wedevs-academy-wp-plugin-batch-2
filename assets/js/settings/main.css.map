@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack:///./assets/settings/main.scss"],"sourcesContent":["body {\n\tbackground-color: red;\n}\n"],"names":[],"sourceRoot":""}
