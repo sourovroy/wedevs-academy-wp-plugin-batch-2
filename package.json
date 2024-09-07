@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "@wordpress/scripts": "^28.6.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.26.1"
   }
 }

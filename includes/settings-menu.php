@@ -5,6 +5,8 @@ class weDevs_Academy_WP_Plugin_Settings_Menu {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'wp_ajax_academy_settings_post_view', array( $this, 'academy_settings_post_view' ) );
+		add_action( 'wp_ajax_academy_settings_get_post_view', array( $this, 'academy_settings_get_post_view' ) );
 	}
 
 	public function admin_menu() {
@@ -32,11 +34,40 @@ class weDevs_Academy_WP_Plugin_Settings_Menu {
 		echo '<div id="academy-settings-app"></div>';
 	}
 
-	public function admin_enqueue_scripts() {
+	public function admin_enqueue_scripts($hook) {
+		if ( 'toplevel_page_academy_settings' !== $hook ) {
+			return;
+		}
+
+		wp_enqueue_style( 'wp-components' );
+
 		$main_asset = require WEDEVS_ACADEMY_PATH . 'assets/js/settings/main.asset.php';
 
 		wp_enqueue_script('academy-settings', WEDEVS_ACADEMY_URL . 'assets/js/settings/main.js', $main_asset['dependencies'], $main_asset['version'], array(
 			'in_footer' => true
 		) );
+
+		wp_localize_script('academy-settings', 'academySettings', array(
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+		));
+	}
+
+	public function academy_settings_post_view() {
+		// TODO: Nonce need to be verified.
+
+		$data = array(
+			'heading' => isset( $_POST['heading'] ) ? sanitize_text_field( $_POST['heading'] ) : '',
+			'show' => isset( $_POST['show'] ) && 'on' == $_POST['show'] ? 1 : 0,
+		);
+
+		update_option('academy_settings_post_view', $data, false);
+
+		wp_send_json_success();
+	}
+
+	public function academy_settings_get_post_view() {
+		$data = get_option('academy_settings_post_view', array());
+
+		wp_send_json_success( $data );
 	}
 }
