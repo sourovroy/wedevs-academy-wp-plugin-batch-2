@@ -42,14 +42,16 @@ class weDevs_Academy_WP_Plugin {
 		require_once __DIR__ . '/lib/CMB2/init.php';
 		require_once __DIR__ . '/includes/settings-menu.php';
 		require_once __DIR__ . '/includes/admin-notice.php';
+		require_once __DIR__ . '/includes/rewrite-rules.php';
 
 		// new weDevs_Academy_WP_Plugin_Admin_Menu();
 		// new weDevs_Academy_WP_Plugin_Post_column();
 		// new weDevs_Academy_WP_Plugin_Post_Type();
 		// new weDevs_Academy_WP_Plugin_Security();
 		// new weDevs_Academy_WP_Plugin_Ajax();
-		new weDevs_Academy_WP_Plugin_Settings_Menu();
-		new weDevs_Academy_WP_Plugin_Admin_Notice();
+		// new weDevs_Academy_WP_Plugin_Settings_Menu();
+		// new weDevs_Academy_WP_Plugin_Admin_Notice();
+		new weDevs_Academy_WP_Plugin_Rewrite_Rules();
 	}
 
 	private function register_constants() {
