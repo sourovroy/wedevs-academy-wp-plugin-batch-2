@@ -43,6 +43,7 @@ class weDevs_Academy_WP_Plugin {
 		require_once __DIR__ . '/includes/settings-menu.php';
 		require_once __DIR__ . '/includes/admin-notice.php';
 		require_once __DIR__ . '/includes/rewrite-rules.php';
+		require_once __DIR__ . '/includes/cron.php';
 
 		// new weDevs_Academy_WP_Plugin_Admin_Menu();
 		// new weDevs_Academy_WP_Plugin_Post_column();
@@ -51,12 +52,13 @@ class weDevs_Academy_WP_Plugin {
 		// new weDevs_Academy_WP_Plugin_Ajax();
 		// new weDevs_Academy_WP_Plugin_Settings_Menu();
 		// new weDevs_Academy_WP_Plugin_Admin_Notice();
-		new weDevs_Academy_WP_Plugin_Rewrite_Rules();
+		new weDevs_Academy_WP_Plugin_Cron();
 	}
 
 	private function register_constants() {
 		define( 'WEDEVS_ACADEMY_URL', plugin_dir_url( __FILE__ ) );
 		define( 'WEDEVS_ACADEMY_PATH', plugin_dir_path( __FILE__ ) );
+		define( 'WEDEVS_ACADEMY__FILE__', __FILE__ );
 	}
 
 	/**
