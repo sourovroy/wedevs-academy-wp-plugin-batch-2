@@ -6,6 +6,8 @@
 
 class weDevs_Academy_WP_Plugin {
 
+	private $version = '1.0';
+
 	private static $instance;
 
 	public static function get_instance() {
@@ -17,7 +19,7 @@ class weDevs_Academy_WP_Plugin {
 	}
 
 	private function __construct() {
-		if ( version_compare( phpversion(), '8.3', '<' ) ) {
+		/*if ( version_compare( phpversion(), '8.3', '<' ) ) {
 			$this->show_php_required_notice();
 
 			return;
@@ -27,7 +29,7 @@ class weDevs_Academy_WP_Plugin {
 			$this->show_wp_required_notice();
 
 			return;
-		}
+		}*/
 
 		$this->register_constants();
 		$this->require_classes();
@@ -44,6 +46,7 @@ class weDevs_Academy_WP_Plugin {
 		require_once __DIR__ . '/includes/admin-notice.php';
 		require_once __DIR__ . '/includes/rewrite-rules.php';
 		require_once __DIR__ . '/includes/cron.php';
+		require_once __DIR__ . '/includes/license.php';
 
 		// new weDevs_Academy_WP_Plugin_Admin_Menu();
 		// new weDevs_Academy_WP_Plugin_Post_column();
@@ -52,10 +55,11 @@ class weDevs_Academy_WP_Plugin {
 		// new weDevs_Academy_WP_Plugin_Ajax();
 		// new weDevs_Academy_WP_Plugin_Settings_Menu();
 		// new weDevs_Academy_WP_Plugin_Admin_Notice();
-		new weDevs_Academy_WP_Plugin_Cron();
+		new weDevs_Academy_WP_Plugin_License();
 	}
 
 	private function register_constants() {
+		define( 'WEDEVS_ACADEMY_VERSION', $this->version );
 		define( 'WEDEVS_ACADEMY_URL', plugin_dir_url( __FILE__ ) );
 		define( 'WEDEVS_ACADEMY_PATH', plugin_dir_path( __FILE__ ) );
 		define( 'WEDEVS_ACADEMY__FILE__', __FILE__ );
